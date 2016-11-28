@@ -1,3 +1,6 @@
+var betteridgeRegEx = 
+  /(^|\.\s|\-\s|—\s)(do|does|did|can|could|was|will|is).+\?/ig;
+
 var tweets = document.getElementsByClassName('tweet-text');
 var tweetsArray = Array.prototype.slice.call(tweets);
 
@@ -8,9 +11,11 @@ function findAncestor (el, className) {
 
 for (var i = 0; i < tweetsArray.length; i++) {
   var text = tweetsArray[i].textContent;
-  var result = /and/.test(text);
-  if (result) {
+
+  if (betteridgeRegEx.test(text) ) {
     var tweet = findAncestor(tweets[i], 'stream-item');
+    console.log('>>>>>>>>'  + i + '<<<<<<<<<<');
+    console.log(text);
     tweet.style.opacity = "0.5";
   }
 }
