@@ -2,9 +2,12 @@
 
   "manifest_version": 2,
   "name": "twitter-filter",
-  "description": "Lowers the opacity of tweets that match clickbaity patterns",
   "version": "1.0",
-
+  "description": "Lowers the opacity of tweets that match clickbaity patterns",
+  
+  "icons": {
+    "48": "icons/noun_706731_cc-48px.png"
+  },
   "content_scripts": [
     {
       "matches": ["https://twitter.com/*"],
