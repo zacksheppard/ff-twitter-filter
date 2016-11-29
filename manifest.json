@@ -2,6 +2,7 @@
 
   "manifest_version": 2,
   "name": "twitter-filter",
+  "description": "Lowers the opacity of tweets that match clickbaity patterns",
   "version": "1.0",
 
   "content_scripts": [
