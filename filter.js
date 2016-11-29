@@ -26,9 +26,8 @@ function filterContainer(containerElement, callback) {
   }
 }
 
-// Saving the timeline and then replace it after tweet changes are made 
-// to reduce the number of times we modify the DOM
-// had to use var because const was throwing an error
+// Save the timeline to a variable and then replace it after tweet changes 
+// are made to reduce the number of times we modify the DOM
 const timeline = document.getElementById('timeline');
 
 filterContainer(timeline, function(updatedTimeline) {
