@@ -9,11 +9,10 @@ function findAncestor(el, className) {
   return el;
 }
 
-function updateStream(containerElement) {
+function filterContainer(containerElement, callback) {
   let filteredElement = containerElement;
 
   let tweets = filteredElement.getElementsByClassName('tweet-text');
-  // let tweetsArray = Array.prototype.slice.call(tweets);
 
   for (var i = 0; i < tweets.length; i++) {
     let text = tweets[i].textContent;
@@ -21,22 +20,18 @@ function updateStream(containerElement) {
     if ( betteridgeRegEx.test(text) ) {
       let tweet = findAncestor(tweets[i], 'stream-item');
       tweet.style.opacity = "0.3";
+    } 
 
-      if (i === tweets.length -1 ) {
-        containerElement.parentNode.replaceChild(filteredElement, containerElement);
-      }
-    } else {
-      if (i === tweets.length -1 ) {
-        containerElement.parentNode.replaceChild(filteredElement, containerElement);
-      }
-    }
-
-    
+    callback(filteredElement);
   }
 }
 
-// save .stream-container to a variable
-var streamContainer = document.getElementById('timeline');
+// Saving the timeline and then replace it after tweet changes are made 
+// to reduce the number of times we modify the DOM
+// had to use var because const was throwing an error
+const timeline = document.getElementById('timeline');
 
-updateStream(streamContainer);
+filterContainer(timeline, function(updatedTimeline) {
+  timeline.parentNode.replaceChild(updatedTimeline, timeline)
+});
 

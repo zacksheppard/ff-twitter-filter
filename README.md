@@ -7,4 +7,5 @@ On loading Twitter, this Firefox Add-on lowers the opacity of tweets that have a
 * Continue improving Betteridge regex by comparing it against more examples
 * Add an observer to handle new tweets added to the page
 * Modify logic so it can look for more than just the Betteridge pattern
-* Improve rendering time
+* Use a CSS class to style the tweets instead of changing opacity directly
+* Add error handling
